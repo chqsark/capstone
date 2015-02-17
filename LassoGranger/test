@@ -1,0 +1,148 @@
+5642      
+From: Rui Wang <ruiw@andrew.cmu.edu>
+Content-Type: multipart/alternative;
+	boundary="Apple-Mail=_04153FC1-092C-4245-AB47-C9C25260998B"
+X-Smtp-Server: smtp.andrew.cmu.edu:ruiw
+Subject: distance.java
+Message-Id: <0D228127-2676-427C-A7C4-A64C69483EC9@andrew.cmu.edu>
+X-Universally-Unique-Identifier: 8509BA2E-3390-4C80-B288-094CCA624F3E
+Date: Wed, 10 Dec 2014 06:10:42 -0500
+To: Keli Wu <keliw@andrew.cmu.edu>
+Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
+
+
+--Apple-Mail=_04153FC1-092C-4245-AB47-C9C25260998B
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii
+
+
+
+
+
+
+
+
+
+--Apple-Mail=_04153FC1-092C-4245-AB47-C9C25260998B
+Content-Type: multipart/mixed;
+	boundary="Apple-Mail=_5FFBF475-E0B3-480C-9C16-A2526AD1BE19"
+
+
+--Apple-Mail=_5FFBF475-E0B3-480C-9C16-A2526AD1BE19
+Content-Transfer-Encoding: 7bit
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv="Content-Type" content="text/html charset=us-ascii"></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"></body></html>
+--Apple-Mail=_5FFBF475-E0B3-480C-9C16-A2526AD1BE19
+Content-Disposition: attachment;
+	filename=Distance.java
+Content-Type: application/octet-stream;
+	name="Distance.java"
+Content-Transfer-Encoding: 7bit
+
+import java.io.IOException;
+import org.apache.pig.EvalFunc;
+import org.apache.pig.data.Tuple;
+import org.apache.pig.impl.util.WrappedIOException;
+
+public class Distance extends EvalFunc <String>
+{
+    public String exec(Tuple input) throws IOException, NullPointerException {
+       	if (input!=null&&input.get(0)!=null&&input.get(1)!=null&&input.get(2)!=null&&input.get(3)!=null){
+	try{
+            double crimeLat=(double)input.get(0);
+            double crimeLng=(double)input.get(1);
+            double parkLat =(double)input.get(2);
+            double parkLng =(double)input.get(3);
+            double earthRadius = 6371; //kilometers
+            double dLat = Math.toRadians(crimeLat-parkLat);
+            double dLng = Math.toRadians(crimeLng-parkLng);
+            double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(Math.toRadians(crimeLat)) * Math.cos(Math.toRadians(parkLat)) * Math.sin(dLng/2) * Math.sin(dLng/2);
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            float dist = (float) (earthRadius * c);
+		 return (dist < 1)?"True":"False";
+        }catch(Exception e){
+            throw WrappedIOException.wrap("Caught exception processing input row "+e.getMessage(), e);
+        }
+	}
+	else return null;
+    }
+}
+
+
+
+--Apple-Mail=_5FFBF475-E0B3-480C-9C16-A2526AD1BE19
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html =
+charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: =
+after-white-space;"><br><br><div apple-content-edited=3D"true">
+<div style=3D"color: rgb(0, 0, 0); letter-spacing: normal; orphans: =
+auto; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: auto; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><div =
+style=3D"color: rgb(0, 0, 0); letter-spacing: normal; orphans: auto; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: =
+after-white-space;"><div style=3D"color: rgb(0, 0, 0); letter-spacing: =
+normal; orphans: auto; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: auto; word-spacing: =
+0px; -webkit-text-stroke-width: 0px; word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><div =
+style=3D"letter-spacing: normal; orphans: auto; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: =
+auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; word-wrap: =
+break-word; -webkit-nbsp-mode: space; -webkit-line-break: =
+after-white-space;"><div style=3D"orphans: auto; text-align: start; =
+text-indent: 0px; widows: auto; word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><div =
+style=3D"orphans: auto; text-align: start; text-indent: 0px; widows: =
+auto; word-wrap: break-word; -webkit-nbsp-mode: space; =
+-webkit-line-break: after-white-space;"><div style=3D"orphans: auto; =
+text-align: start; text-indent: 0px; widows: auto; word-wrap: =
+break-word; -webkit-nbsp-mode: space; -webkit-line-break: =
+after-white-space;"><div style=3D"orphans: auto; text-align: start; =
+text-indent: 0px; widows: auto; word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><div =
+style=3D"orphans: auto; text-align: start; text-indent: 0px; widows: =
+auto; word-wrap: break-word; -webkit-nbsp-mode: space; =
+-webkit-line-break: after-white-space;"><div style=3D"margin-top: 0px; =
+margin-bottom: 0px;"><div style=3D"color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 13px; letter-spacing: normal; text-transform: =
+none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;"><br></div></div></div></div></div></div></div></div></div></div><br =
+class=3D"Apple-interchange-newline"></div><br =
+class=3D"Apple-interchange-newline"><br =
+class=3D"Apple-interchange-newline">
+</div>
+<br></body></html>=
+
+--Apple-Mail=_5FFBF475-E0B3-480C-9C16-A2526AD1BE19--
+
+--Apple-Mail=_04153FC1-092C-4245-AB47-C9C25260998B--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1418209842</integer>
+	<key>date-sent</key>
+	<integer>1418209842</integer>
+	<key>flags</key>
+	<integer>8623686657</integer>
+	<key>remote-id</key>
+	<string>247</string>
+	<key>subject</key>
+	<string>distance.java</string>
+</dict>
+</plist>
