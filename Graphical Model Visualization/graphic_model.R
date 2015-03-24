@@ -16,6 +16,8 @@ for(i in 1:475){
     }
 }
 
+View(test)
+
 #construc the graphic model and plot it
 
 number<-seq(1, 476, by=1)
